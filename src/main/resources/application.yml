@@ -1,5 +1,10 @@
 spring:
   datasource:
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#    url: jdbc:h2:tcp://localhost/~/awsdemo
+
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://rdstest.ccvp7e6x9w8y.ap-northeast-2.rds.amazonaws.com:3306/database_1?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: admin
