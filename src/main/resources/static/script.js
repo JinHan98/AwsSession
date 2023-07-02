@@ -35,7 +35,7 @@ const deletePost = async (event) => {
     const postId = event.target.dataset.id;
 
     try {
-        const response = await axios.delete(`${apiUrl}/${postId}`);
+        const response = await axios.delete(`${apiUrl}/posts/${postId}`);
         console.log(response.data); // 삭제된 게시글 정보 출력
 
         // 삭제된 게시글을 화면에서 제거
@@ -52,7 +52,7 @@ const editPost = async (event) => {
     const newContent = prompt('새로운 내용:');
 
     try {
-        const response = await axios.patch(`${apiUrl}/${postId}`, { title: newTitle, content: newContent });
+        const response = await axios.patch(`${apiUrl}/posts/${postId}`, { title: newTitle, content: newContent });
         console.log(response.data); // 수정된 게시글 정보 출력
 
         // 수정된 게시글 정보 갱신
