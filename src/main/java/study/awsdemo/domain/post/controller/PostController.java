@@ -22,7 +22,7 @@ public class PostController {
     public List<PostDto> getPosts() {
         List<Post> findAll = postRepository.findAll();
         List<PostDto> postDtoList = findAll.stream()
-                .map(post -> new PostDto(post.getTitle(), post.getContent()))
+                .map(post -> new PostDto(post.getId(), post.getTitle(), post.getContent()))
                 .toList();
         return postDtoList;
     }
@@ -31,22 +31,20 @@ public class PostController {
     public PostDto createPost(@RequestBody PostDto request) {
         Post post = new Post(request.getTitle(), request.getContent());
         postRepository.save(post);
-        return new PostDto(post.getTitle(), post.getContent());
+        return new PostDto(post.getId(), post.getTitle(), post.getContent());
     }
 
-    @DeleteMapping("posts/{id}")
-    public void deletePost(@PathVariable Long id) {
-        System.out.println(id);
-
-        Optional<Post> byId = postRepository.findById(id);
+    @DeleteMapping("posts/{postId}")
+    public void deletePost(@PathVariable("postId") Long postId) {
+        Optional<Post> byId = postRepository.findById(postId);
         if (byId.isPresent()) {
             Post findPost = byId.get();
             postRepository.delete(findPost);
         }
     }
 
-//    @PatchMapping("posts/{id}")
-//    public PostDto updatePost(@RequestBody PostDto request, @PathVariable Long id) {
+//    @PatchMapping("posts/{postId}")
+//    public PostDto updatePost(@RequestBody PostDto request, @PathVariable("postId") Long id) {
 //
 //    }
 }
