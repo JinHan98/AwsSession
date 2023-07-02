@@ -26,7 +26,7 @@ public class PostController {
     }
 
     @PostMapping("posts/create")
-    public void createPost(PostDto request) {
+    public void createPost(@RequestBody PostDto request) {
         Post post = new Post(request.getTitle(), request.getContent());
         postRepository.save(post);
     }
