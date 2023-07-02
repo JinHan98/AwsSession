@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>게시판</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <meta charset="UTF-8">
+  <h1>게시판</h1>
+  <form id="create-post-form">
+    <input type="text" id="title-input" placeholder="제목" required>
+    <textarea id="content-input" placeholder="내용" required></textarea>
+    <button type="submit">글 작성</button>
+  </form>
+
+  <div id="posts-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+</div>
+</body>
+</html>
