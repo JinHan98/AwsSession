@@ -52,7 +52,7 @@ const editPost = async (event) => {
     const newContent = prompt('새로운 내용:');
 
     try {
-        const response = await axios.patch(`${apiUrl}/posts/${postId}`, { title: newTitle, content: newContent });
+        const response = await axios.patch(`${apiUrl}/posts`, { id: postId ,title: newTitle, content: newContent });
         console.log(response.data); // 수정된 게시글 정보 출력
 
         // 수정된 게시글 정보 갱신

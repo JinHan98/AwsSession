@@ -43,8 +43,16 @@ public class PostController {
         }
     }
 
-//    @PatchMapping("posts/{postId}")
-//    public PostDto updatePost(@RequestBody PostDto request, @PathVariable("postId") Long id) {
-//
-//    }
+    @PatchMapping("posts")
+    public PostDto updatePost(@RequestBody PostDto request) {
+        Optional<Post> byId= postRepository.findById(request.getId());
+        if(byId.isPresent()){
+            Post updatePost=byId.get();
+            updatePost.setTitle(request.getTitle());
+            updatePost.setContent(request.getContent());
+            postRepository.save(updatePost);
+            return new PostDto(request.getId(), updatePost.getTitle(), updatePost.getContent());
+        }
+        return new PostDto();
+    }
 }
